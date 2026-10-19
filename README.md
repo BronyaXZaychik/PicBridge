@@ -34,8 +34,7 @@
 ```bash
 pip install pillow
 python serve.py "D:\你的图片文件夹" --port 8765
-
-markdown
+```
 
 ## 碎碎念
 
