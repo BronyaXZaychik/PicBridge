@@ -1,63 +1,36 @@
-# 图片查看器（局域网版本）
+# PicBridge · 图桥
 
-把电脑里的图片用手机浏览器看。不用插线、不用传文件、不用装 App，
-手机和电脑连同一个 Wi-Fi，扫个码就能看。
-
-支持动图 WebP、JPG、PNG、GIF；
-增强版另外支持 iPhone 的 HEIC/HEIF、TIFF、BMP、ICO、AVIF。
-
----
-
-## 特点
-
-- 手机扫码即看，缩略图网格 + 大图 + 左右/上下滑动
-- 自动为动图生成轻量版（降分辨率、降帧率），体积约为原图 1/50
-- 支持同时挂载多个文件夹，热加载，不用重启
-- 内置二维码（纯 Python 生成，离线可用）
-- 桌面端四种界面：简洁 / 标准 / 详细 / 自定义
-- 只读：不修改、不重命名、不删除任何原图
-- 不写注册表、不装服务、不开机自启
+把电脑里的图片，用手机浏览器看。
+不用插线、不用传文件、不用装 App，同一 Wi-Fi 扫码即看。
 
 ## 下载
 
-- **标准版**：适合大多数人，20 MB，内置 Python + Pillow
-- **增强版**：有 iPhone 照片或 TIFF/AVIF 的人用，40 MB
+| 版本 | 大小 | 适用 | 下载 |
+|---|---|---|---|
+| 标准版 | 20 MB | 大多数人（webp/png/jpg/gif） | [Standard.Edition.zip](https://github.com/BronyaXZaychik/PicBridge/releases/download/V.1.0/Standard.Edition.zip) |
+| 增强版 | 41 MB | 有 iPhone 照片 / 扫描件 / AVIF | [Enhanced.version.zip](https://github.com/BronyaXZaychik/PicBridge/releases/download/V.1.0/Enhanced.version.zip) |
 
-解压后双击 EXE文件，。
+解压后双击 `1-创建桌面快捷方式.bat`，再从桌面图标启动。
+首次启动会让你选一个图片文件夹，之后手机扫码即可。
 
-首次启动会弹窗选一个图片文件夹；
+## 特点
 
-手机扫码即可。
+- 动图 WebP 自动生成轻量版，手机播放不卡（体积约为原图 1/50）
+- 支持多文件夹同时挂载，改目录热生效，不用重启
+- 内置二维码，纯 Python 生成，离线可用
+- 四种界面：简洁 / 标准 / 详细 / 自定义，可调透明度
+- 照片 EXIF 方向自动修正
+- **只读**：不修改、不重命名、不删除任何原图
+- 不写注册表、不装服务、不开机自启
+
+## 增强版额外支持
+
+`heic` `heif`（iPhone）、`tif` `tiff`（扫描件）、`bmp` `ico`、`avif`
+
+其中 HEIC/AVIF/TIFF 可自动转成 JPG，兼容各类浏览器，转换结果缓存在 `程序\缓存\conv`。
 
 ## 从源码运行
-
-需要 Python 3.10+ 与 Pillow：
 
 ```bash
 pip install pillow
 python serve.py "D:\你的图片文件夹" --port 8765
-```
-
-桌面界面（可选）：
-
-```powershell
-powershell -ExecutionPolicy Bypass -File 启动器.ps1
-```
-
-## 常见问题
-
-**手机扫码打不开**
-多半是 Windows 防火墙。双击包里的 `2-手机打不开-放行防火墙.bat`，
-或者手动在 `wf.msc` 里放行 TCP 8765。
-
-**端口被占用**
-程序会自动改用 8766、8767……以窗口里显示的二维码为准。
-
-**缓存占空间**
-缓存在 `程序\缓存`，可以随时清空，不影响原图。
-
-## 许可
-
-代码采用 MIT 许可证。`vendor/segno` 归其原作者，遵循其自身许可证。
-
-界面背景图与图标为用户自备素材，不包含在仓库中。
