@@ -1,0 +1,9 @@
+缓存/
+配置.json
+二维码.png
+serve.pid
+stop.flag
+crash.log
+__pycache__/
+runtime/
+*.zip
